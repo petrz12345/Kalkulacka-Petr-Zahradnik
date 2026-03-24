@@ -38,6 +38,7 @@
             this.txtDisplay.Name = "txtDisplay";
             this.txtDisplay.Size = new System.Drawing.Size(654, 20);
             this.txtDisplay.TabIndex = 0;
+            this.txtDisplay.Text = "0";
             this.txtDisplay.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
@@ -46,7 +47,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

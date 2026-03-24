@@ -26,10 +26,12 @@ namespace Kalkulacka_Petr_Zahradnik
         {
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            txtDisplay.Text = "hello world";
+            if (txtDisplay.Text == "0") {
+                txtDisplay.Text = "";
+            }
+            txtDisplay.Text = txtDisplay.Text + "1";
         }
     }
 }
