@@ -28,10 +28,13 @@ namespace Kalkulacka_Petr_Zahradnik
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            Button MyButton;
+            MyButton = (Button)sender;
+
             if (txtDisplay.Text == "0") {
                 txtDisplay.Text = "";
             }
-            txtDisplay.Text = txtDisplay.Text + "1";
+            txtDisplay.Text = txtDisplay.Text + MyButton.Text;
         }
     }
 }
