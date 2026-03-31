@@ -21,11 +21,12 @@ namespace Kalkulacka_Petr_Zahradnik
         {
 
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        //napiš stisknuté tlačítko na display
         private void button1_Click(object sender, EventArgs e)
         {
             Button MyButton;
@@ -35,6 +36,12 @@ namespace Kalkulacka_Petr_Zahradnik
                 txtDisplay.Text = "";
             }
             txtDisplay.Text = txtDisplay.Text + MyButton.Text;
+        }
+
+        //Tlačítko smazat
+        private void buttonCLR_Click(object sender, EventArgs e)
+        {
+            txtDisplay.Text = "0";
         }
     }
 }
