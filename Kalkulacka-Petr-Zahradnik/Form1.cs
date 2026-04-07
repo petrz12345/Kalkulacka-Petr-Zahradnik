@@ -8,27 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Kalkulacka_Petr_Zahradnik
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
+namespace Kalkulacka_Petr_Zahradnik {
+    public partial class Form1 : Form {
+        //Proměnné operantů
+        double mdblNum1, mdblNuml2, mdblOut;
+        public Form1() {
             InitializeComponent();
+            //smazat proměnné
+            ClrAll();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) {
 
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+        private void textBox1_TextChanged(object sender, EventArgs e) {
 
         }
 
         //napiš stisknuté tlačítko na display
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e) {
             Button MyButton;
             MyButton = (Button)sender;
 
@@ -39,9 +37,29 @@ namespace Kalkulacka_Petr_Zahradnik
         }
 
         //Tlačítko smazat
-        private void buttonCLR_Click(object sender, EventArgs e)
-        {
+        private void buttonCLR_Click(object sender, EventArgs e) {
+            ClrAll();
+        }
+
+        private void ClrAll() {
             txtDisplay.Text = "0";
+            mdblNum1 = mdblNuml2 = mdblOut = 0;
+        }
+
+        //Handlování operací
+        private void buttonOperations_Click(object sender, EventArgs e) {
+            Button MyButton = (Button)sender;
+            DisplayToVariable();
+        }
+
+        private void DisplayToVariable() {
+            try {
+                mdblNuml2 = mdblNum1;
+                mdblNum1 = Convert.ToDouble(txtDisplay.Text);
+            } catch(Exception e) {
+                MessageBox.Show("NaN      Jejda, něco se pokazilo");
+                ClrAll();
+            }
         }
     }
 }
