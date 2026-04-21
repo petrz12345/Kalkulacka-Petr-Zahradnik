@@ -62,8 +62,19 @@ namespace Kalkulacka_Petr_Zahradnik {
             Button MyButton = (Button)sender;
             DisplayToVariable();
             mblOperationSelected = true;
+            switch(MyButton.Text) {
+                case "+": menCurrentOperation = enOperation.add; break;
+                case "-": menCurrentOperation = enOperation.substract; break;
+                case "*": menCurrentOperation = enOperation.multiply; break;
+                case "/": menCurrentOperation = enOperation.divide; break;
+
+            }
         }
 
+
+
+
+        //posunout a yapsat čísla
         private void DisplayToVariable() {
             try {
                 mdblNuml2 = mdblNum1;
