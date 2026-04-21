@@ -12,6 +12,9 @@ namespace Kalkulacka_Petr_Zahradnik {
     public partial class Form1 : Form {
         //Proměnné operantů
         double mdblNum1, mdblNuml2, mdblOut;
+        bool mblOperationSelected = false;
+        enum enOperation {none, add, substract, multiply, divide};
+        enOperation menCurrentOperation;
         public Form1() {
             InitializeComponent();
             //smazat proměnné
@@ -29,11 +32,17 @@ namespace Kalkulacka_Petr_Zahradnik {
         private void button1_Click(object sender, EventArgs e) {
             Button MyButton;
             MyButton = (Button)sender;
-
+            //Je na displayji nula?
             if (txtDisplay.Text == "0") {
                 txtDisplay.Text = "";
             }
-            txtDisplay.Text = txtDisplay.Text + MyButton.Text;
+            //Je vybraná operace?
+            if(mblOperationSelected == true) {
+                txtDisplay.Text = "";
+                mblOperationSelected = false;
+            }
+
+            txtDisplay.Text = txtDisplay.Text +MyButton.Text;
         }
 
         //Tlačítko smazat
@@ -44,12 +53,15 @@ namespace Kalkulacka_Petr_Zahradnik {
         private void ClrAll() {
             txtDisplay.Text = "0";
             mdblNum1 = mdblNuml2 = mdblOut = 0;
+            mblOperationSelected = false;
+            menCurrentOperation = enOperation.none;
         }
 
         //Handlování operací
         private void buttonOperations_Click(object sender, EventArgs e) {
             Button MyButton = (Button)sender;
             DisplayToVariable();
+            mblOperationSelected = true;
         }
 
         private void DisplayToVariable() {
