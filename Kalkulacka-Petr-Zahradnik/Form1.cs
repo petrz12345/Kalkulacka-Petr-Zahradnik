@@ -13,7 +13,7 @@ namespace Kalkulacka_Petr_Zahradnik {
         //Proměnné operantů
         double mdblNum1, mdblNum2, mdblOut;
         bool mblOperationSelected = false;
-        enum enOperation {none, add, substract, multiply, divide};
+        enum enOperation {none, add, substract, multiply, divide, power, powerRoot};
         enOperation menCurrentOperation;
         public Form1() {
             InitializeComponent();
@@ -67,6 +67,8 @@ namespace Kalkulacka_Petr_Zahradnik {
                 case "-": menCurrentOperation = enOperation.substract; break;
                 case "*": menCurrentOperation = enOperation.multiply; break;
                 case "/": menCurrentOperation = enOperation.divide; break;
+                case "^": menCurrentOperation = enOperation.power; break;
+                case "sqrt": menCurrentOperation= enOperation.powerRoot; break;
             }
             //vyhpočítat
             if(MyButton.Text == "=") {
@@ -76,6 +78,8 @@ namespace Kalkulacka_Petr_Zahradnik {
                     case enOperation.substract: mdblOut = mdblNum2 - mdblNum1; break;
                     case enOperation.multiply: mdblOut = mdblNum2 * mdblNum1; break;
                     case enOperation.divide: mdblOut = mdblNum2 / mdblNum1; break;
+                    case enOperation.power: mdblOut = Math.Pow(mdblNum2, mdblNum1); break;
+                    case enOperation.powerRoot: mdblOut = Math.Pow(mdblNum2, Math.Pow(mdblNum1, -1)); break;
                 }
                 //Zobraziti výsledečíček
                 txtDisplay.Text = mdblOut.ToString();
