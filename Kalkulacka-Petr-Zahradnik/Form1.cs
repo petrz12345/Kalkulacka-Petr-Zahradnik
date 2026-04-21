@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace Kalkulacka_Petr_Zahradnik {
     public partial class Form1 : Form {
         //Proměnné operantů
-        double mdblNum1, mdblNuml2, mdblOut;
+        double mdblNum1, mdblNum2, mdblOut;
         bool mblOperationSelected = false;
         enum enOperation {none, add, substract, multiply, divide};
         enOperation menCurrentOperation;
@@ -52,7 +52,7 @@ namespace Kalkulacka_Petr_Zahradnik {
 
         private void ClrAll() {
             txtDisplay.Text = "0";
-            mdblNum1 = mdblNuml2 = mdblOut = 0;
+            mdblNum1 = mdblNum2 = mdblOut = 0;
             mblOperationSelected = false;
             menCurrentOperation = enOperation.none;
         }
@@ -67,17 +67,24 @@ namespace Kalkulacka_Petr_Zahradnik {
                 case "-": menCurrentOperation = enOperation.substract; break;
                 case "*": menCurrentOperation = enOperation.multiply; break;
                 case "/": menCurrentOperation = enOperation.divide; break;
-
+            }
+            //vyhpočítat
+            if(MyButton.Text == "=") {
+                //vykona operaci
+                switch(menCurrentOperation) { 
+                    case enOperation.add: mdblOut = mdblNum2 + mdblNum1; break;
+                    case enOperation.substract: mdblOut = mdblNum2 - mdblNum1; break;
+                    case enOperation.multiply: mdblOut = mdblNum2 * mdblNum1; break;
+                    case enOperation.divide: mdblOut = mdblNum2 / mdblNum1; break;
+                }
+                //Zobraziti výsledečíček
+                txtDisplay.Text = mdblOut.ToString();
             }
         }
-
-
-
-
-        //posunout a yapsat čísla
+        //posunout a zapsat čísla
         private void DisplayToVariable() {
             try {
-                mdblNuml2 = mdblNum1;
+                mdblNum2 = mdblNum1;
                 mdblNum1 = Convert.ToDouble(txtDisplay.Text);
             } catch(Exception e) {
                 MessageBox.Show("NaN      Jejda, něco se pokazilo");
